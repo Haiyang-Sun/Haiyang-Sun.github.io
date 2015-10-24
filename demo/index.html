@@ -221,6 +221,9 @@
 			update_permission(-1);
 			update_callstack(-1);
 			update_config(-1);
+//			setInterval(loopback_bc, 3000);
+//			setInterval(loopback_net, 3000);
+//			setInterval(loopback, 5000);
 		}
 
 		</script>
@@ -408,9 +411,10 @@
 				<div id = "permission">
 					<span>Filter by </span><select class="form-control input" id="proc_list" onchange="loopback()">
 						<option></option>
-						<option>pixelrush.xphonefree</option>
 						<option>ch.usi.dag.android.example</option>
+						<option>com.android.contacts</option>
 						<option>com.android.phone</option>
+						<option>pixelrush.xphonefree</option>
 					</select>
 					<table class="table table-condensed table-bordered table-striped" id="permission_table" >
 					</table>
