@@ -1,3 +1,6 @@
+#<img src="./figures/logo.png" style="width: 300px;" onclick="window.location='https://haiyang-sun.github.io/tool/intro.html'"/>  
+--
+
 #Use Case - Information Leak Detection
 ##Description
 Information leaks represent one of the major security concerns of Android applications.

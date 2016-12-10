@@ -551,9 +551,13 @@ pre .line-highlight {
 
 <body>
 
-<h1 id="toc_0">Use Case - Information Leak Detection</h1>
+<h1 id="toc_0"><img src="./figures/logo.png" style="width: 300px;" onclick="window.location='https://haiyang-sun.github.io/tool/intro.html'"/></h1>
 
-<h2 id="toc_1">Description</h2>
+<h2 id="toc_1"></h2>
+
+<h1 id="toc_2">Use Case - Information Leak Detection</h1>
+
+<h2 id="toc_3">Description</h2>
 
 <p>Information leaks represent one of the major security concerns of Android applications.</p>
 
@@ -565,9 +569,9 @@ pre .line-highlight {
 
 <p>For this use case, we focus in particular on the transmission of the device ID over the network.</p>
 
-<h2 id="toc_2">Instrumentation Scope Specification</h2>
+<h2 id="toc_4">Instrumentation Scope Specification</h2>
 
-<h3 id="toc_3">Network Monitoring - DataSink</h3>
+<h3 id="toc_5">Network Monitoring - DataSink</h3>
 
 <p>With the ability to instrument Android library as easy as any piece of application code, we achieve network monitoring by just instrumenting the <a href="https://android.googlesource.com/platform/libcore/+/jb-mr2-release/luni/src/main/java/libcore/io/IoBridge.java"><strong>libcore.io.IoBridge</strong></a> in the <strong>core.jar</strong>.</p>
 
@@ -581,18 +585,18 @@ pre .line-highlight {
 <li>Dynamically loaded classes would never get checked</li>
 </ul>
 
-<h3 id="toc_4">TelephonyManager.getDeviceId Monitoring - DataSource</h3>
+<h3 id="toc_6">TelephonyManager.getDeviceId Monitoring - DataSource</h3>
 
 <p>The key is to monitor the invocation of <em>TelephonyManager.getDeviceId()</em>. 
 We can achieve it either by instrumenting <a href="https://developer.android.com/reference/android/telephony/TelephonyManager.html"><strong>android.telephony.TelephonyManager</strong></a> in the <strong>framework.jar</strong> or instrumenting all the callsites of <em>TelephonyManager.getDeviceId()</em> in the application. To show the convinient and rich API of our specification language, we take the second choice.</p>
 
-<h3 id="toc_5">Method Trace</h3>
+<h3 id="toc_7">Method Trace</h3>
 
 <p>We produce the method trace of the application by monitoring all method entry/exit events. Together with the Data Source/Sink information, we are able to provide a more detailed report.</p>
 
-<h2 id="toc_6">Property Specification</h2>
+<h2 id="toc_8">Property Specification</h2>
 
-<h3 id="toc_7">Network</h3>
+<h3 id="toc_9">Network</h3>
 
 <p>Take the IoBridge.sendto which deals with all network sending as an example:</p>
 
@@ -612,7 +616,7 @@ public static void sendto(ArgumentProcessorContext apc, DynamicContext dc){
     Monitor.onDataSource(new NetworkSendEvent(fd, buffer, byteOffset, sentSize, flags, address, port));
 }</code></pre></div>
 
-<h3 id="toc_8">GetDeviceId</h3>
+<h3 id="toc_10">GetDeviceId</h3>
 
 <p>Catching all invocation to <em>TelephonyManager.getDeviceId</em></p>
 
@@ -631,7 +635,7 @@ public static void getDeviceId (DynamicContext dc) {
         }
     }</code></pre></div>
 
-<h2 id="toc_9">Result</h2>
+<h2 id="toc_11">Result</h2>
 
 <p>We conduct the experiment on a <a href="https://github.com/ashishb/android-malware/tree/master/Android.Malware.at_plapk.a"><strong>malware sample</strong></a>.</p>
 
@@ -661,7 +665,7 @@ public static void getDeviceId (DynamicContext dc) {
 
 <p>We detect that the packet sent to 180.97.161.164:80 contains the deviceId we record at DataSource.</p>
 
-<h2 id="toc_10">Go Further</h2>
+<h2 id="toc_12">Go Further</h2>
 
 <p>The code above is an illustration of a simple case. We are still working and enriching an API list of DataSource and DataSink, so that it can be applied to further cases.
 In addition, we are also going to release a property dedicated for fully inspecting <strong>Java Reflection</strong>.</p>

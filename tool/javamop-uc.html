@@ -551,9 +551,13 @@ pre .line-highlight {
 
 <body>
 
-<h1 id="toc_0">Use Case - JavaMOP on Android</h1>
+<h1 id="toc_0"><img src="./figures/logo.png" style="width: 300px;" onclick="window.location='https://haiyang-sun.github.io/tool/intro.html'"/></h1>
 
-<h2 id="toc_1">Description</h2>
+<h2 id="toc_1"></h2>
+
+<h1 id="toc_2">Use Case - JavaMOP on Android</h1>
+
+<h2 id="toc_3">Description</h2>
 
 <p>We choose five well-known JavaMOP properties:</p>
 
@@ -589,11 +593,11 @@ pre .line-highlight {
 </tbody>
 </table>
 
-<h2 id="toc_2">Instrumentation Scope Specification</h2>
+<h2 id="toc_4">Instrumentation Scope Specification</h2>
 
 <p>In this use case, our instrumentation cover the framework.jar which includes major Android framework implementation, the bytecode inside the target application and all dynamically loaded bytecode</p>
 
-<h2 id="toc_3">Property Specification</h2>
+<h2 id="toc_5">Property Specification</h2>
 
 <p>Below we take the <em>HasNext</em> Property as example to show how we define the property to detect violation:</p>
 
@@ -611,7 +615,7 @@ public static void HasNext_hasnext(ArgumentProcessorContext pc) {
 
 <p>The implementation of <em>HasNextRuntimeMonitor</em> is adapted from JavaMOP and can be found <a href="">here</a>.</p>
 
-<h2 id="toc_4">Result</h2>
+<h2 id="toc_6">Result</h2>
 
 <p><center>
 <img src="https://haiyang-sun.github.io/tool/figures/gms1.jpg" style="width: 400px;"/>
