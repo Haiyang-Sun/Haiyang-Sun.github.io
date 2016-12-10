@@ -30,7 +30,7 @@ __TODO__: script on the VM
 
 Wait until the installation finish and the system reboots (You will see Android Logo after reboot).
  
-###Installation for Android arm-emulator
+###For Android arm-emulator
 1. Download the emualtor images [here](). It includes files as below:
 	- kernel-qemu-armv7
 	- cache.img         
