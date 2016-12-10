@@ -13,10 +13,32 @@ UnsafeMapIterator | WLike UnsafeIterator, with differences     related to the cr
 ##Instrumentation Scope Specification
 In this use case, our instrumentation cover the framework.jar which includes major Android framework implementation, the bytecode inside the target application and all dynamically loaded bytecode
 
-##RV Property Specification
-We use DiSL as the specification language in our tool, and reuse JavaMOP's monitoring logics.
+##Property Specification
+Below we take the _HasNext_ Property as example to show how we define the property to detect violation:
 
-TODO: put our DiSLCode here
+~~~java
+@Before(marker = NextInvocationMarker.class)
+public static void HasNext_next(ArgumentProcessorContext pc){
+		Iterator receiver = (Iterator) pc.getReceiver(ArgumentProcessorMode.CALLSITE_ARGS);
+		HasNextRuntimeMonitor.nextEvent(receiver);
+}
+@After(marker = HasNextInvocationMarker.class)
+public static void HasNext_hasnext(ArgumentProcessorContext pc) {
+		Iterator receiver = (Iterator) pc.getReceiver(ArgumentProcessorMode.CALLSITE_ARGS);
+		HasNextRuntimeMonitor.hasnextEvent(receiver);
+}
+
+~~~
+The implementation of _HasNextRuntimeMonitor_ is adapted from JavaMOP and can be found [here]().
 
 ##Result
-Property | Joint Point Shadows || Joint Point Executions
+
+![alt GMS joint point shadows](https://haiyang-sun.github.io/tool/figures/gms1.jpeg)
+
+![alt GMS joint point executions](https://haiyang-sun.github.io/tool/figures/gms2.jpeg)
+
+![alt malware joint point shadows](https://haiyang-sun.github.io/tool/figures/malware1.jpeg)
+
+![alt malware joint point executions](https://haiyang-sun.github.io/tool/figures/malware2.jpeg)
+
+![alt detailed numbers](https://haiyang-sun.github.io/tool/figures/coveragetable.png)
