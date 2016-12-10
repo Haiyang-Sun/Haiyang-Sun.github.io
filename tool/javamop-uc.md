@@ -32,13 +32,12 @@ public static void HasNext_hasnext(ArgumentProcessorContext pc) {
 The implementation of _HasNextRuntimeMonitor_ is adapted from JavaMOP and can be found [here]().
 
 ##Result
+<center>
+<img src="https://haiyang-sun.github.io/tool/figures/gms1.jpg" style="width: 400px;"/>
+<img src="https://haiyang-sun.github.io/tool/figures/gms2.jpg" style="width: 400px;"/>
 
-![alt GMS joint point shadows](https://haiyang-sun.github.io/tool/figures/gms1.jpg =800 )
+<img src="https://haiyang-sun.github.io/tool/figures/malware1.jpg" style="width: 400px;"/>
+<img src="https://haiyang-sun.github.io/tool/figures/malware2.jpg" style="width: 400px;"/>
 
-![alt GMS joint point executions](https://haiyang-sun.github.io/tool/figures/gms2.jpg =800 )
-
-![alt malware joint point shadows](https://haiyang-sun.github.io/tool/figures/malware1.jpg =800 )
-
-![alt malware joint point executions](https://haiyang-sun.github.io/tool/figures/malware2.jpg =800)
-
-![alt detailed numbers](https://haiyang-sun.github.io/tool/figures/coveragetable.png =800)
+<img src="https://haiyang-sun.github.io/tool/figures/coveragetable.png" style="width: 600px;"/>
+</center>
