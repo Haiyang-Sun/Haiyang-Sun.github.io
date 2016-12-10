@@ -15,10 +15,13 @@ TOOLNAME weaves monitoring code at load time and is able to instrument all loade
 
 ##Download
 
-###
-[Nexus 5 Build Image]()
-###
-[VirtualBox Image]()
+We provide two deployment images with dynamic weaving enabled:
+	* an installation image for Nexus-5
+	* emulator images
+
+We also provide a VirtualBox images with script to run some of the experiments with emulator.
+
+The detailed guide can be found [here](https://haiyang-sun.github.io/tool/installation.html).  
 
 ##Contacts
 
