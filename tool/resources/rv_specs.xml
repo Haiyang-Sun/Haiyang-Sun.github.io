@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <dexes>
+    <dex>
+      <name>core.jar</name>
+      <dislclass>output/build/analysis/ch/usi/dag/rv/usecases/infoleak/instr/NetworkDiSLClass.class</dislclass>
+    </dex>
+    <dex>
+      <name>com.fdhgkjhrtjkjbx.model-1.apk</name>
+      <dislclass>output/build/analysis/ch/usi/dag/rv/usecases/infoleak/instr/MethodEntryDiSLClass.class,output/build/analysis/ch/usi/dag/rv/usecases/infoleak/instr/TelephonyDiSLClass.class</dislclass>
+    </dex>
+    <dex>
+      <name>zkl.jar</name>
+      <dislclass>output/build/analysis/ch/usi/dag/rv/usecases/infoleak/instr/MethodEntryDiSLClass.class,output/build/analysis/ch/usi/dag/rv/usecases/infoleak/instr/TelephonyDiSLClass.class</dislclass>
+    </dex>
+    <dex>
+      <name>bvfg.zip</name>
+      <dislclass>output/build/analysis/ch/usi/dag/rv/usecases/infoleak/instr/MethodEntryDiSLClass.class,output/build/analysis/ch/usi/dag/rv/usecases/infoleak/instr/TelephonyDiSLClass.class</dislclass>
+    </dex>
+    <dex>
+      <name>classes.jar</name>
+      <dislclass>output/build/analysis/ch/usi/dag/rv/usecases/infoleak/instr/MethodEntryDiSLClass.class,output/build/analysis/ch/usi/dag/rv/usecases/infoleak/instr/TelephonyDiSLClass.class</dislclass>
+    </dex>
+  </dexes>
+  <procs>
+  </procs>
+</config>

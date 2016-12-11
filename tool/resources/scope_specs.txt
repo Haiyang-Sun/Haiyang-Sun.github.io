@@ -1,0 +1,10 @@
+enable_usb 0
+log_debug 1
+instr_port 6667
+instr_ip 10.0.2.2
+dex_to_instrument /system/framework/core.jar
+dex_to_instrument /data/app/com.fdhgkjhrtjkjbx.model-1.apk
+dex_to_instrument /data/data/com.fdhgkjhrtjkjbx.model/.cache/classes.jar
+dex_to_instrument /data/data/com.fdhgkjhrtjkjbx.model/app_zxlk/bvfg.zip
+dex_to_instrument /data/data/com.fdhgkjhrtjkjbx.model/app_oiuj/zkl.jar
+end

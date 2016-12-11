@@ -46,7 +46,7 @@ Wait until the installation finish and the system reboots (You will see Android 
 	~~~
 2. Specify the _Scope Specs_ for the proxy service on Android by updating the bytecode list to be sent to the instrumentation server
 
-	- A sample can be found [here](http://195.176.181.79/ADRENALIN-RV/resources/scope_spec.prop) 
+	- A sample can be found [here](https://haiyang-sun.github.io/tool/resources/scope_spec.txt) 
 3. Upload the _Scope Specs_ to Android emulator/device and reboot to make it take effects
 
 	~~~bash
@@ -56,7 +56,7 @@ Wait until the installation finish and the system reboots (You will see Android 
 	adb reboot
 	~~~
 4. Prepare the RV specification at the instrumentation server
-	- A sample can be found [here](http://195.176.181.79/ADRENALIN-RV/resources/rv_spec.xml)
+	- A sample can be found [here](https://haiyang-sun.github.io/tool/resources/rv_spec.xml)
 5. Starting the instrumentation server with the following command:
 
 	~~~bash
