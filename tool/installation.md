@@ -46,7 +46,7 @@ Wait until the installation finish and the system reboots (You will see Android 
 	~~~
 2. Specify the _Scope Specs_ for the proxy service on Android by updating the bytecode list to be sent to the instrumentation server
 
-	- A sample can be found [here](https://haiyang-sun.github.io/tool/resources/scope_specs.html) 
+	- A sample can be found [here](https://haiyang-sun.github.io/tool/resources/scope_specs.txt) 
 3. Upload the _Scope Specs_ to Android emulator/device and reboot to make it take effects
 
 	~~~bash
