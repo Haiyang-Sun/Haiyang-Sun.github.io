@@ -609,11 +609,15 @@ fastboot -w update PATH_TO_IMAGE_FILE</code></pre></div></li>
 <ol>
 <li><p>Write your properties in DiSL code and compile them into DiSLClasses</p>
 
-<div><pre><code class="language-none">javac -cp PATH/disl-server.jar:OTHER_LIB YOUR_MONITOR_CODE </code></pre></div></li>
+<div><pre><code class="language-none">javac -cp PATH/disl-server.jar:OTHER_LIB YOUR_MONITOR_CODE </code></pre></div>
+
+<ul>
+<li>or use our provided data leak analysis library <a href="http://195.176.181.79/ADRENALIN-RV/resources/analysis.jar">here</a></li>
+</ul></li>
 <li><p>Specify the <em>Scope Specs</em> for the proxy service on Android by updating the bytecode list to be sent to the instrumentation server</p>
 
 <ul>
-<li>A sample can be found <a href="https://haiyang-sun.github.io/tool/resources/scope_specs.txt">here</a> </li>
+<li>The sample for the data leak analysis can be found <a href="https://haiyang-sun.github.io/tool/resources/scope_specs.txt">here</a> </li>
 </ul></li>
 <li><p>Upload the <em>Scope Specs</em> to Android emulator/device and reboot to make it take effects</p>
 
@@ -624,7 +628,7 @@ adb reboot</code></pre></div></li>
 <li><p>Prepare the RV specification at the instrumentation server</p>
 
 <ul>
-<li>A sample can be found <a href="https://haiyang-sun.github.io/tool/resources/rv_specs.xml">here</a></li>
+<li>The sample for the data leak analysis can be found <a href="https://haiyang-sun.github.io/tool/resources/rv_specs.xml">here</a></li>
 </ul></li>
 <li><p>Starting the instrumentation server with the following command:</p>
 
@@ -634,10 +638,18 @@ adb reboot</code></pre></div></li>
 ./start-instrumentation.sh RV_SPECS_FILE YOUR_MONITOR_JAR
 # nexus
 ./start-instrumentation-usb.sh RV_SPECS_FILE YOUR_MONITOR_JAR</code></pre></div></li>
-<li><p>The emulator/device will be ready after several minutes depending on how much instrumentation the analysis requires. Run the target application to test</p></li>
+<li><p>The emulator/device will be ready after several minutes depending on how much instrumentation the analysis requires. Run the target application to test. The malware sample can be downloaded <a href="https://github.com/ashishb/android-malware/blob/master/Android.Malware.at_plapk.a/com.fdhgkjhrtjkjbx.model.apk?raw=true">here</a>.</p></li>
+<li><p>Use <a href="http://antoine-merle.com/using-monkey-tool/">monkey</a> to dynamically test your application. For example, below bash script will use monkey to launch an app and inject some random test events.</p>
+
+<div><pre><code class="language-bash">adb shell monkey -p com.myapp -c android.intent.category.LAUNCHER 1
+adb shell monkey -p com.myapp --throttle 500 -v 1000</code></pre></div></li>
 <li><p>The most convenient way of dumping the result is via Android default <a href="https://developer.android.com/reference/android/util/Log.html">Logging</a>. You can fetch the log and filter your result by</p>
 
-<div><pre><code class="language-bash">adb logcat | grep YOUR_TAG</code></pre></div></li>
+<div><pre><code class="language-bash">adb logcat | grep YOUR_TAG</code></pre></div>
+
+<p>e.g., use the following commands you will get the output of our <a href="https://haiyang-sun.github.io/tool/dataleak-uc.html">information leak analysis</a>.</p>
+
+<div><pre><code class="language-bash">adb logcat | grep VIOLATION</code></pre></div></li>
 </ol>
 
 <h2 id="toc_8">Use the Provided Virtualbox Image</h2>

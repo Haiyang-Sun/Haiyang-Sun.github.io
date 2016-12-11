@@ -44,9 +44,11 @@ Wait until the installation finish and the system reboots (You will see Android 
 	~~~
 	javac -cp PATH/disl-server.jar:OTHER_LIB YOUR_MONITOR_CODE 
 	~~~
+	
+	- or use our provided data leak analysis library [here](http://195.176.181.79/ADRENALIN-RV/resources/analysis.jar)
 2. Specify the _Scope Specs_ for the proxy service on Android by updating the bytecode list to be sent to the instrumentation server
 
-	- A sample can be found [here](https://haiyang-sun.github.io/tool/resources/scope_specs.txt) 
+	- The sample for the data leak analysis can be found [here](https://haiyang-sun.github.io/tool/resources/scope_specs.txt) 
 3. Upload the _Scope Specs_ to Android emulator/device and reboot to make it take effects
 
 	~~~bash
@@ -56,7 +58,7 @@ Wait until the installation finish and the system reboots (You will see Android 
 	adb reboot
 	~~~
 4. Prepare the RV specification at the instrumentation server
-	- A sample can be found [here](https://haiyang-sun.github.io/tool/resources/rv_specs.xml)
+	- The sample for the data leak analysis can be found [here](https://haiyang-sun.github.io/tool/resources/rv_specs.xml)
 5. Starting the instrumentation server with the following command:
 
 	~~~bash
@@ -67,11 +69,22 @@ Wait until the installation finish and the system reboots (You will see Android 
 	# nexus
 	./start-instrumentation-usb.sh RV_SPECS_FILE YOUR_MONITOR_JAR
 	~~~
-6. The emulator/device will be ready after several minutes depending on how much instrumentation the analysis requires. Run the target application to test
-7. The most convenient way of dumping the result is via Android default [Logging](https://developer.android.com/reference/android/util/Log.html). You can fetch the log and filter your result by
+6. The emulator/device will be ready after several minutes depending on how much instrumentation the analysis requires. Run the target application to test. The malware sample can be downloaded [here](https://github.com/ashishb/android-malware/blob/master/Android.Malware.at_plapk.a/com.fdhgkjhrtjkjbx.model.apk?raw=true).
+7. Use [monkey](http://antoine-merle.com/using-monkey-tool/) to dynamically test your application. For example, below bash script will use monkey to launch an app and inject some random test events.
+
+	~~~bash
+	adb shell monkey -p com.myapp -c android.intent.category.LAUNCHER 1
+	adb shell monkey -p com.myapp --throttle 500 -v 1000
+	~~~
+8. The most convenient way of dumping the result is via Android default [Logging](https://developer.android.com/reference/android/util/Log.html). You can fetch the log and filter your result by
 
 	~~~bash
 	adb logcat | grep YOUR_TAG
+	~~~
+	e.g., use the following commands you will get the output of our [information leak analysis](https://haiyang-sun.github.io/tool/dataleak-uc.html).
+	
+	~~~bash
+	adb logcat | grep VIOLATION
 	~~~
 	
 ##Use the Provided Virtualbox Image
