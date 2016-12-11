@@ -1,12 +1,6 @@
 #<img src="./figures/logo.png" style="width: 300px;" onclick="window.location='https://haiyang-sun.github.io/tool/intro.html'"/>  
 --
 #Installation Guide
-##Use the Provided Virtualbox Image
-The VirtualBox [image]() is Ubuntu (16.04.1 LTS). It contains the script to run the emulator and scripts needed to run the [information leak analysis](https://haiyang-sun.github.io/tool/dataleak-uc.html).
-
-To login to the VM, use the login user name "user" and the password "password".
-
-__TODO__: script on the VM
 ##Installation from scratch
 ###Prerequisites
 1. Recommendation running OS: ubuntu 14 or above
@@ -15,11 +9,11 @@ __TODO__: script on the VM
 	- emulator (for emulator)
 	- fastboot (for building Nexus 5 image)
 3. Java version 8 or above (to run the instrumentation server)
-4. Download the Android DiSL package [here]()
+4. Download the Android DiSL package [here](http://195.176.181.79/ADRENALIN-RV/resources/disl.tgz)
 
 
 ###For Nexus 5
-1. Download the image file [here]()
+1. Download the image file [here](http://195.176.181.79/ADRENALIN-RV/resources/nexus.zip)
 
 2. Flush the Android image with dynamic weaving with the following bash command:
 
@@ -31,7 +25,7 @@ __TODO__: script on the VM
 Wait until the installation finish and the system reboots (You will see Android Logo after reboot).
  
 ###For Android arm-emulator
-1. Download the emualtor images [here](). It includes files as below:
+1. Download the emualtor images [here](http://195.176.181.79/ADRENALIN-RV/resources/arm-emu.tgz). It includes files as below:
 	- kernel-qemu-armv7
 	- cache.img         
 	- ramdisk.img       
@@ -52,7 +46,7 @@ Wait until the installation finish and the system reboots (You will see Android 
 	~~~
 2. Specify the _Scope Specs_ for the proxy service on Android by updating the bytecode list to be sent to the instrumentation server
 
-	- A sample can be found [here]() 
+	- A sample can be found [here](http://195.176.181.79/ADRENALIN-RV/resources/scope_spec.prop) 
 3. Upload the _Scope Specs_ to Android emulator/device and reboot to make it take effects
 
 	~~~bash
@@ -62,7 +56,7 @@ Wait until the installation finish and the system reboots (You will see Android 
 	adb reboot
 	~~~
 4. Prepare the RV specification at the instrumentation server
-	- A sample can be found [here]()
+	- A sample can be found [here](http://195.176.181.79/ADRENALIN-RV/resources/rv_spec.xml)
 5. Starting the instrumentation server with the following command:
 
 	~~~bash
@@ -79,3 +73,8 @@ Wait until the installation finish and the system reboots (You will see Android 
 	~~~bash
 	adb logcat | grep YOUR_TAG
 	~~~
+	
+##Use the Provided Virtualbox Image
+The VirtualBox [image]() is Ubuntu (16.04.1 LTS). It contains the script to run the emulator and scripts needed to run the [information leak analysis](https://haiyang-sun.github.io/tool/dataleak-uc.html).
+
+To login to the VM, use the login user name "user" and the password "password".

@@ -557,17 +557,9 @@ pre .line-highlight {
 
 <h1 id="toc_2">Installation Guide</h1>
 
-<h2 id="toc_3">Use the Provided Virtualbox Image</h2>
+<h2 id="toc_3">Installation from scratch</h2>
 
-<p>The VirtualBox <a href="">image</a> is Ubuntu (16.04.1 LTS). It contains the script to run the emulator and scripts needed to run the <a href="https://haiyang-sun.github.io/tool/dataleak-uc.html">information leak analysis</a>.</p>
-
-<p>To login to the VM, use the login user name &quot;user&quot; and the password &quot;password&quot;.</p>
-
-<p><strong>TODO</strong>: script on the VM</p>
-
-<h2 id="toc_4">Installation from scratch</h2>
-
-<h3 id="toc_5">Prerequisites</h3>
+<h3 id="toc_4">Prerequisites</h3>
 
 <ol>
 <li>Recommendation running OS: ubuntu 14 or above</li>
@@ -579,13 +571,13 @@ pre .line-highlight {
 <li>fastboot (for building Nexus 5 image)</li>
 </ul></li>
 <li>Java version 8 or above (to run the instrumentation server)</li>
-<li>Download the Android DiSL package <a href="">here</a></li>
+<li>Download the Android DiSL package <a href="http://195.176.181.79/ADRENALIN-RV/resources/disl.tgz">here</a></li>
 </ol>
 
-<h3 id="toc_6">For Nexus 5</h3>
+<h3 id="toc_5">For Nexus 5</h3>
 
 <ol>
-<li><p>Download the image file <a href="">here</a></p></li>
+<li><p>Download the image file <a href="http://195.176.181.79/ADRENALIN-RV/resources/nexus.zip">here</a></p></li>
 <li><p>Flush the Android image with dynamic weaving with the following bash command:</p>
 
 <div><pre><code class="language-bash">adb reboot-bootloader;
@@ -594,10 +586,10 @@ fastboot -w update PATH_TO_IMAGE_FILE</code></pre></div></li>
 
 <p>Wait until the installation finish and the system reboots (You will see Android Logo after reboot).</p>
 
-<h3 id="toc_7">For Android arm-emulator</h3>
+<h3 id="toc_6">For Android arm-emulator</h3>
 
 <ol>
-<li>Download the emualtor images <a href="">here</a>. It includes files as below:
+<li>Download the emualtor images <a href="http://195.176.181.79/ADRENALIN-RV/resources/arm-emu.tgz">here</a>. It includes files as below:
 
 <ul>
 <li>kernel-qemu-armv7</li>
@@ -612,7 +604,7 @@ fastboot -w update PATH_TO_IMAGE_FILE</code></pre></div></li>
 <div><pre><code class="language-bash">emulator -sdcard ../sdcard.img -sysdir ./ -system ./system.img -ramdisk ./ramdisk.img -data ./userdata.img -kernel ./kernel-qemu-armv7 -memory 1024</code></pre></div></li>
 </ol>
 
-<h3 id="toc_8">Start Testing</h3>
+<h3 id="toc_7">Start Testing</h3>
 
 <ol>
 <li><p>Write your properties in DiSL code and compile them into DiSLClasses</p>
@@ -621,7 +613,7 @@ fastboot -w update PATH_TO_IMAGE_FILE</code></pre></div></li>
 <li><p>Specify the <em>Scope Specs</em> for the proxy service on Android by updating the bytecode list to be sent to the instrumentation server</p>
 
 <ul>
-<li>A sample can be found <a href="">here</a> </li>
+<li>A sample can be found <a href="http://195.176.181.79/ADRENALIN-RV/resources/scope_spec.prop">here</a> </li>
 </ul></li>
 <li><p>Upload the <em>Scope Specs</em> to Android emulator/device and reboot to make it take effects</p>
 
@@ -632,7 +624,7 @@ adb reboot</code></pre></div></li>
 <li><p>Prepare the RV specification at the instrumentation server</p>
 
 <ul>
-<li>A sample can be found <a href="">here</a></li>
+<li>A sample can be found <a href="http://195.176.181.79/ADRENALIN-RV/resources/rv_spec.xml">here</a></li>
 </ul></li>
 <li><p>Starting the instrumentation server with the following command:</p>
 
@@ -647,6 +639,12 @@ adb reboot</code></pre></div></li>
 
 <div><pre><code class="language-bash">adb logcat | grep YOUR_TAG</code></pre></div></li>
 </ol>
+
+<h2 id="toc_8">Use the Provided Virtualbox Image</h2>
+
+<p>The VirtualBox <a href="">image</a> is Ubuntu (16.04.1 LTS). It contains the script to run the emulator and scripts needed to run the <a href="https://haiyang-sun.github.io/tool/dataleak-uc.html">information leak analysis</a>.</p>
+
+<p>To login to the VM, use the login user name &quot;user&quot; and the password &quot;password&quot;.</p>
 
 
 

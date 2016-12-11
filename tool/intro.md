@@ -1,7 +1,7 @@
 #<img src="./figures/logo.png" style="width: 300px;"/> 
 
 ##Introduction
-TOOLNAME weaves monitoring code at load time and is able to instrument all loaded classes. In addition to the default classes inside the application package (APK), TOOLNAME covers both the Android class library and libraries loaded at runtime from the storage, network, or dynamic generation, which static weaving won't be able to monitor.
+ADRENALIN-RV weaves monitoring code at load time and is able to instrument all loaded classes. In addition to the default classes inside the application package (APK), ADRENALIN-RV covers both the Android class library and libraries loaded at runtime from the storage, network, or dynamic generation, which static weaving won't be able to monitor.
 
 
 <center>
