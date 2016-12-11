@@ -13,7 +13,7 @@ ADRENALIN-RV weaves monitoring code at load time and is able to instrument all l
 
 [_JavaMOP Adaption_](https://haiyang-sun.github.io/tool/javamop-uc.html)
 
-##Download
+##Installation and Download
 
 We provide two deployment images with dynamic weaving enabled:
 	* an installation image for Nexus-5
@@ -21,7 +21,7 @@ We provide two deployment images with dynamic weaving enabled:
 
 We also provide a VirtualBox images with script to run some of the experiments with emulator.
 
-The detailed guide can be found [here](https://haiyang-sun.github.io/tool/installation.html).  
+The detailed guide can be found [__here__](https://haiyang-sun.github.io/tool/installation.html).  
 
 ##Contacts
 
