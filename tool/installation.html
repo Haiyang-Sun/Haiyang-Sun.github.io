@@ -557,24 +557,68 @@ pre .line-highlight {
 
 <h1 id="toc_2">Installation Guide</h1>
 
-<h2 id="toc_3">Installation from scratch</h2>
+<h2 id="toc_3">Try the VMWare Image</h2>
 
-<h3 id="toc_4">Prerequisites</h3>
+<p>Download the VM image <a href="http://195.176.181.79/ADRENALIN-RV/resources/vm.ova">here</a>, which is Ubuntu (16.04.1 LTS). It contains the script to run the emulator and scripts needed to run the <a href="https://haiyang-sun.github.io/tool/dataleak-uc.html">information leak analysis</a>.</p>
+
+<h3 id="toc_4">Login</h3>
+
+<p>To login to the VM, use the login user name &quot;user&quot; and the password &quot;password&quot;.</p>
+
+<h3 id="toc_5">Run the example</h3>
+
+<p>All the related stuff is in $HOME/tool. </p>
+
+<div><pre><code class="language-bash">##start the emulator and instrumentation server here
+./startTool.sh
+#wait until the emulator is ready (The main UI menu shows up)
+##this process takes 1 min+ for the emulator to load and weave the bytecodes
+
+#the malware sample application is already installed
+##in case the emulator reset the installed app
+./installSampleApk.sh to install the apk
+
+#use monkey to test it
+./runMonkey.sh
+
+#show result from the log
+./show_result.sh
+</code></pre></div>
+
+<h2 id="toc_6">Installation from scratch</h2>
+
+<h3 id="toc_7">Prerequisites</h3>
+
+<p>For your convenience, we provide these pacakges <a href="http://195.176.181.79/ADRENALIN-RV/resources/tool.tgz">here</a>, including</p>
+
+<ul>
+<li>instrumentation server</li>
+<li>arm emulator images</li>
+<li>a sample test case with script to run</li>
+<li>necessary android tools (binaries for Ubuntu 14 or above, for other OSes, you have to download Android SDK on your own) with
+
+<ul>
+<li>adb </li>
+<li>emulator </li>
+<li>fastboot (for building Nexus 5 image)</li>
+</ul></li>
+</ul>
+
+<p>Or you have to prepare the following on your own:</p>
 
 <ol>
-<li>Recommendation running OS: ubuntu 14 or above</li>
-<li>Download latest Android SDK, and add the following tools into your <em>PATH</em> environment variable:
+<li><p>Download latest Android SDK, and add the following tools into your <em>PATH</em> environment variable:</p>
 
 <ul>
 <li>adb</li>
 <li>emulator (for emulator)</li>
 <li>fastboot (for building Nexus 5 image)</li>
 </ul></li>
-<li>Java version 8 or above (to run the instrumentation server)</li>
-<li>Download the Android DiSL package <a href="http://195.176.181.79/ADRENALIN-RV/resources/disl.tgz">here</a></li>
+<li><p>Java version 8 or above (to run the instrumentation server)</p></li>
+<li><p>The instrumentation server <a href="http://195.176.181.79/ADRENALIN-RV/resources/disl.tgz">here</a></p></li>
 </ol>
 
-<h3 id="toc_5">For Nexus 5</h3>
+<h3 id="toc_8">For Nexus 5</h3>
 
 <ol>
 <li><p>Download the image file <a href="http://195.176.181.79/ADRENALIN-RV/resources/nexus.zip">here</a></p></li>
@@ -586,10 +630,10 @@ fastboot -w update PATH_TO_IMAGE_FILE</code></pre></div></li>
 
 <p>Wait until the installation finish and the system reboots (You will see Android Logo after reboot).</p>
 
-<h3 id="toc_6">For Android arm-emulator</h3>
+<h3 id="toc_9">For Android arm-emulator</h3>
 
 <ol>
-<li>Download the emualtor images <a href="http://195.176.181.79/ADRENALIN-RV/resources/arm-emu.tgz">here</a>. It includes files as below:
+<li>The images file are included in the provided all-in-one package mentioned <a href="http://195.176.181.79/ADRENALIN-RV/resources/tool.tgz">above</a>. Or you can also download the emualtor images alone <a href="http://195.176.181.79/ADRENALIN-RV/resources/arm-emu.tgz">here</a>. It includes files as below:
 
 <ul>
 <li>kernel-qemu-armv7</li>
@@ -604,7 +648,7 @@ fastboot -w update PATH_TO_IMAGE_FILE</code></pre></div></li>
 <div><pre><code class="language-bash">emulator -sdcard ../sdcard.img -sysdir ./ -system ./system.img -ramdisk ./ramdisk.img -data ./userdata.img -kernel ./kernel-qemu-armv7 -memory 1024</code></pre></div></li>
 </ol>
 
-<h3 id="toc_7">Start Testing</h3>
+<h3 id="toc_10">Start Testing</h3>
 
 <ol>
 <li><p>Write your properties in DiSL code and compile them into DiSLClasses</p>
@@ -651,12 +695,6 @@ adb shell monkey -p com.myapp --throttle 500 -v 1000</code></pre></div></li>
 
 <div><pre><code class="language-bash">adb logcat | grep VIOLATION</code></pre></div></li>
 </ol>
-
-<h2 id="toc_8">Use the Provided Virtualbox Image</h2>
-
-<p>The VirtualBox <a href="">image</a> is Ubuntu (16.04.1 LTS). It contains the script to run the emulator and scripts needed to run the <a href="https://haiyang-sun.github.io/tool/dataleak-uc.html">information leak analysis</a>.</p>
-
-<p>To login to the VM, use the login user name &quot;user&quot; and the password &quot;password&quot;.</p>
 
 
 
