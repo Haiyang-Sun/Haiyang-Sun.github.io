@@ -557,54 +557,7 @@ pre .line-highlight {
 
 <h1 id="toc_2">Installation Guide</h1>
 
-<h2 id="toc_3">Try the VMWare Image</h2>
-
-<p>Download the VM image <a href="http://195.176.181.79/ADRENALIN-RV/resources/vm.ova">here</a>, which is Ubuntu (16.04.1 LTS). It contains the script to run the emulator and scripts needed to run the <a href="https://haiyang-sun.github.io/tool/dataleak-uc.html">information leak analysis</a>.</p>
-
-<h3 id="toc_4">Login</h3>
-
-<p>To login to the VM, use the login user name &quot;user&quot; and the password &quot;password&quot;.</p>
-
-<h3 id="toc_5">Run the example</h3>
-
-<p>All the related stuff is in $HOME/tool. </p>
-
-<div><pre><code class="language-bash">##start the emulator and instrumentation server here
-./startTool.sh
-#wait until the emulator is ready (The main UI menu shows up)
-##this process takes 1 min+ for the emulator to load and weave the bytecodes
-
-#the malware sample application is already installed
-##in case the emulator reset the installed app
-./installSampleApk.sh to install the apk
-
-#use monkey to test it
-./runMonkey.sh
-
-#show result from the log
-./show_result.sh
-</code></pre></div>
-
-<h2 id="toc_6">Installation from scratch</h2>
-
-<h3 id="toc_7">Prerequisites</h3>
-
-<p>For your convenience, we provide these pacakges <a href="http://195.176.181.79/ADRENALIN-RV/resources/tool.tgz">here</a>, including</p>
-
-<ul>
-<li>instrumentation server</li>
-<li>arm emulator images</li>
-<li>a sample test case with script to run</li>
-<li>necessary android tools (binaries for Ubuntu 14 or above, for other OSes, you have to download Android SDK on your own) with
-
-<ul>
-<li>adb </li>
-<li>emulator </li>
-<li>fastboot (for building Nexus 5 image)</li>
-</ul></li>
-</ul>
-
-<p>Or you have to prepare the following on your own:</p>
+<h2 id="toc_3">Prerequisites</h2>
 
 <ol>
 <li><p>Download latest Android SDK, and add the following tools into your <em>PATH</em> environment variable:</p>
@@ -614,29 +567,23 @@ pre .line-highlight {
 <li>emulator (for emulator)</li>
 <li>fastboot (for building Nexus 5 image)</li>
 </ul></li>
-<li><p>Java version 8 or above (to run the instrumentation server)</p></li>
-<li><p>The instrumentation server <a href="http://195.176.181.79/ADRENALIN-RV/resources/disl.tgz">here</a></p></li>
-</ol>
+<li><p>Java version 7</p></li>
+<li><p>Clone and build the repo at <a href="https://github.com/Haiyang-Sun/ADRENALIN-RV">ADRENALIN-RV</a></p>
 
-<h3 id="toc_8">For Nexus 5</h3>
-
-<ol>
-<li><p>Download the image file <a href="http://195.176.181.79/ADRENALIN-RV/resources/nexus.zip">here</a></p></li>
-<li><p>Flush the Android image with dynamic weaving with the following bash command:</p>
+<div><pre><code class="language-bash">git clone https://github.com/Haiyang-Sun/ADRENALIN-RV.git
+cd ADRENALIN-RV
+export JAVA_HOME=&quot;PATH_TO_JAVA_7&quot;
+ant</code></pre></div></li>
+<li><p>Download the Nexus 5 image file <a href="http://195.176.181.79/ADRENALIN-RV/demo/nexus.zip">here</a> and flush the Android image with dynamic weaving with the following bash command:</p>
 
 <div><pre><code class="language-bash">adb reboot-bootloader;
-fastboot -w update PATH_TO_IMAGE_FILE</code></pre></div></li>
-</ol>
+fastboot -w update nexus.zip</code></pre></div>
 
-<p>Wait until the installation finish and the system reboots (You will see Android Logo after reboot).</p>
-
-<h3 id="toc_9">For Android arm-emulator</h3>
-
-<ol>
-<li>The images file are included in the provided all-in-one package mentioned <a href="http://195.176.181.79/ADRENALIN-RV/resources/tool.tgz">above</a>. Or you can also download the emualtor images alone <a href="http://195.176.181.79/ADRENALIN-RV/resources/arm-emu.tgz">here</a>. It includes files as below:
+<p>Wait until the installation finish and the system reboots (You will see Android Logo after reboot).</p></li>
+<li><p>Download the intel emualtor image <a href="http://195.176.181.79/ADRENALIN-RV/demo/artifacts-intel.tar.gz">here</a>. It includes files as below:</p>
 
 <ul>
-<li>kernel-qemu-armv7</li>
+<li>kernel-qemu</li>
 <li>cache.img<br></li>
 <li>ramdisk.img<br></li>
 <li>system.img<br></li>
@@ -645,22 +592,22 @@ fastboot -w update PATH_TO_IMAGE_FILE</code></pre></div></li>
 </ul></li>
 <li><p>You can start the emulator with the following bash command:</p>
 
-<div><pre><code class="language-bash">emulator -sdcard ../sdcard.img -sysdir ./ -system ./system.img -ramdisk ./ramdisk.img -data ./userdata.img -kernel ./kernel-qemu-armv7 -memory 1024</code></pre></div></li>
+<div><pre><code class="language-bash">emulator64-x86 -sdcard ../sdcard.img -sysdir ./ -system ./system.img -ramdisk ./ramdisk.img -data ./userdata.img -kernel ./kernel-qemu -memory 1024</code></pre></div></li>
 </ol>
 
-<h3 id="toc_10">Start Testing</h3>
+<h2 id="toc_4">Run the tool</h2>
 
 <ol>
-<li>get our latest instrumentation server and workspace from <a href="https://github.com/Haiyang-Sun/ADRENALIN-RV.git">ADRENALIN-RV</a></li>
-<li><p>compile using java 7</p>
+<li>Go to the root directory of <a href="https://github.com/Haiyang-Sun/ADRENALIN-RV.git">ADRENALIN-RV</a></li>
+<li><p>Compile using java 7</p>
 
 <div><pre><code class="language-bash">export JAVA_HOME=&quot;PATH_TO_JAVA_7&quot;
 ant</code></pre></div></li>
-<li><p>start instrumentation server using </p>
+<li><p>Start instrumentation server using </p>
 
-<div><pre><code class="language-bash">./start-instrumentation.sh [config_file]
+<div><pre><code class="language-bash">./start-instrumentation.sh [config_file] #or
 ./start-instrumentation.sh disl.config.sample #using the sample config</code></pre></div></li>
-<li><p>install the target app &quot;com.fdhgkjhrtjkjbx.model.apk&quot;</p>
+<li><p>Install the target app &quot;com.fdhgkjhrtjkjbx.model.apk&quot;</p>
 
 <div><pre><code class="language-bash">adb install com.fdhgkjhrtjkjbx.model.apk</code></pre></div></li>
 <li><p>Use <a href="http://antoine-merle.com/using-monkey-tool/">monkey</a> to dynamically test your application. For example, below bash script will use monkey to launch an app and inject some random test events.</p>
