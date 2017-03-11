@@ -25,7 +25,11 @@
 	fastboot -w update nexus.zip
 	~~~
 
-	Wait until the installation finish and the system reboots (You will see Android Logo after reboot).
+	Wait until the installation finish and the system reboots (You will see Android Logo after reboot) and then run in root mode:
+	~~~bash
+	adb root
+	~~~
+
  
 4. Download the intel emualtor image [here](http://195.176.181.79/ADRENALIN-RV/demo/artifacts-intel.tar.gz). It includes files as below:
 	- kernel-qemu

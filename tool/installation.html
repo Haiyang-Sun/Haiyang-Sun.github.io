@@ -579,7 +579,10 @@ ant</code></pre></div></li>
 <div><pre><code class="language-bash">adb reboot-bootloader;
 fastboot -w update nexus.zip</code></pre></div>
 
-<p>Wait until the installation finish and the system reboots (You will see Android Logo after reboot).</p></li>
+<p>Wait until the installation finish and the system reboots (You will see Android Logo after reboot) and then run in root mode:
+~~~bash
+adb root
+~~~</p></li>
 <li><p>Download the intel emualtor image <a href="http://195.176.181.79/ADRENALIN-RV/demo/artifacts-intel.tar.gz">here</a>. It includes files as below:</p>
 
 <ul>
